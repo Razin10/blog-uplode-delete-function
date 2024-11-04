@@ -13,7 +13,7 @@ const App = () => {
 
     const fetchCards = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/cards');
+            const response = await axios.get('https://blog-uplode-delete-function-api.onrender.com/api/cards');
             setApiCards(response.data);
         } catch (error) {
             console.error('Error fetching cards:', error);
@@ -22,7 +22,7 @@ const App = () => {
 
     const fetchMarks = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/marks');
+            const response = await axios.get('https://blog-uplode-delete-function-api.onrender.com/api/marks');
             if (response.data && response.data.value !== undefined) {
                 setMarks(response.data.value);
             } else {
@@ -40,7 +40,7 @@ const App = () => {
         if (isPublic) {
             // Save to database if public
             try {
-                const response = await axios.post('http://localhost:5000/api/cards', newCard);
+                const response = await axios.post('https://blog-uplode-delete-function-api.onrender.com/api/cards', newCard);
                 setApiCards([...apiCards, response.data]);
             } catch (error) {
                 console.error('Error saving card:', error);
@@ -72,7 +72,7 @@ const App = () => {
 
     const confirmDelete = async () => {
         try {
-            await axios.delete(`http://localhost:5000/api/cards/${cardToDelete}`);
+            await axios.delete(`https://blog-uplode-delete-function-api.onrender.com/api/cards/${cardToDelete}`);
             setApiCards(apiCards.filter(card => card._id !== cardToDelete));
             setShowToast(false);
             setCardToDelete(null);
